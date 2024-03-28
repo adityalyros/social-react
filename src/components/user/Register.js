@@ -15,17 +15,18 @@ export default function Register() {
       setMsg(() => "Fields cannot be blank");
     } else {
       setUsers((prev) => [...prev, user]);
-      setFlag(() => 2);
+     
       /////// backend /////
-      // user.role = "user";
-      // const result = await axios.post("http://localhost:8080/signup/", user);
-      // console.log(result.data);
-      // setUser({
-      //   name: result.data.user.name,
-      //   email: result.data.user.email,
-      //   token: result.data.token,
-      // });
+      user.role = "user";
+      const result = await axios.post("http://localhost:8080/signup/", user);
+      console.log(result.data);
+      setUser({
+        name: result.data.user.name,
+        email: result.data.user.email,
+        token: result.data.token,
+      });
       /////////
+      setFlag(() => 2);
       
     }
   };
